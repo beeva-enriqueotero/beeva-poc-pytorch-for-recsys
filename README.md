@@ -16,8 +16,8 @@ Then run spotlight_experiment.ipynb notebook
 
 | Dataset preparation | Algorithm | Parameters | MAP | F1 score | training time
 | --- | --- | -----------| ---- | --- | ---
-| split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.080 | 0.058 | 
-| transpose & split 2/10 | ImplicitFactorizationModel | n_iter=10, loss='bpr'| 0.068 | 0.038 | 
+| split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.079 | 0.057 | 61s
+| transpose & split 2/10 | ImplicitFactorizationModel | n_iter=10, loss='bpr'| 0.063 | 0.038 | 63s
 
 
 #### Movielens 10M
