@@ -4,9 +4,9 @@ Proof of Concept with PyTorch for Recommender Systems at BEEVA
 ### Instructions
 
 ```
-docker run -i -t -p 8888:8888 -v $PWD/notebooks /opt/notebooks continuumio/anaconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root
+docker run -i -t -p 8888:8888 -v $PWD/notebooks:/opt/notebooks continuumio/anaconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
 ```
-Then run spotlight_experiment.ipynb notebook
+Then open `spotlight_experiment.ipynb` notebook in your browser
 
 ### Results
 
