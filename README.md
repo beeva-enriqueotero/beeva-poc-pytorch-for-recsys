@@ -34,5 +34,5 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 ## Spotlight on GPU
 
 ### Issues
-* Not compatible with P3 instances: Spotlight 0.1.3 requires CUDA 8 but Tesla V100 requires CUDA9 for optimal performance. Error. `Found GPU0 Tesla V100-SXM2-16GB which requires CUDA_VERSION >= 8000 [...]`
+* Not compatible with P3 instances and NVIDIA containers: Spotlight 0.1.3 requires CUDA 8 but Tesla V100 requires CUDA9 for optimal performance. Error. `Found GPU0 Tesla V100-SXM2-16GB which requires CUDA_VERSION >= 8000 [...]`
 * Not able to run nvidia-docker2 on Ubuntu P2 instances with Deep Learning AMI Ubuntu Oct 2017. `Error: requirement error: unsatisfied condition: cuda >= 9.0\`
