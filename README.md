@@ -25,7 +25,7 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 
 | Dataset preparation | Algorithm | Parameters | MAP | F1 score | training time
 | --- | --- | -----------| ---- | --- | ---
-| split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| x | x | >3h
-| transpose & split 2/10 | ImplicitFactorizationModel | n_iter=10, loss='bpr'| x | x |
+| split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.076 | 0.059 | 3h33:09
+| transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.040 | 0.025 |2h:39:41
 
 
