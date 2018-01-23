@@ -1,5 +1,5 @@
 # beeva-poc-pytorch-for-recsys
-Proof of Concept with PyTorch for Recommender Systems at BEEVA
+Proof of Concept with PyTorch-based [Spotlight](https://github.com/maciejkula/spotlight) library for Recommender Systems at BEEVA
 
 ### Instructions
 
