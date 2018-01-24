@@ -48,7 +48,7 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.040 | 0.025 |2h:39:41s
 | --- | --- | --- | -----------| ---- | --- | ---
 | 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077 +-0.001 | 0.059 +-0.001 | 5:08.5s +-0.5s
-| 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.037 | 0.022 | 5:05s
+| 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.038+-0.002 | 0.023+-0.002 | 5:05.5s +-0.5s
 
 ### Conclusions
 * Execution on scenario 2 (GPU) is around 40x faster for Movielens10M not transposed.
