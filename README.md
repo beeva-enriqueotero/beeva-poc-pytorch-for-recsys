@@ -36,8 +36,8 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.063+-0.0005 | 0.037+-0.001 | 64.5 +-1.5s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=10, loss='bpr'| 0.068 | 0.038 |
 | --- | --- | --- | -----------| ---- | --- | ---
-| 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'|  |  | 
-| 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'|  |  | 19s 
+| 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.078 +-0.001  | 0.056 +-0.001 | 19s +-0.5s
+| 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.064 +-0.003 | 0.037 +-0.001 | 17s 
 
 
 #### Movielens 10M
