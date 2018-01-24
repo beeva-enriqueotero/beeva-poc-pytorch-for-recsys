@@ -51,6 +51,7 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.038+-0.002 | 0.023+-0.002 | 5:05.5s +-0.5s
 
 ### Conclusions
+* Scores on transposed datasets are significantly lower than scores on original datasets.
 * Execution on scenario 2 (GPU) is around 40x faster for Movielens10M not transposed.
 
 ### Issues
