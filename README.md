@@ -5,13 +5,32 @@ Proof of Concept with PyTorch-based [Spotlight](https://github.com/maciejkula/sp
 
 ### Instructions
 
-* Scenario 1 (CPU): laptop 16GB, 4 processors Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz, spotlight=0.1.3
+* Scenario 1 (CPU, dockerized): laptop 16GB, 4 processors Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz, spotlight=0.1.3
 
 ```
 # Instructions for infrastructure 1
 docker run -i -t -p 8888:8888 -v $PWD/notebooks:/opt/notebooks continuumio/anaconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
 ```
-* Scenario 2 (GPU):  AWS p2.x (1 gpu nvidia Tesla K80). Deep Learning AMI Ubuntu Linux - 2.4_Oct2017 (ami-f1d51489), NVIDIA Driver 375.66, CUDA 8.0, libcudnn.so.5.1.10, spotlight=0.1.3
+
+* Scenario 2 (GPU, dockerized): AWS p2.x (1 gpu nvidia Tesla K80). Ubuntu AMI.
+```
+# Install nvidia-docker2
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+sudo apt install nvidia-docker
+
+# Build image
+sudo docker build . -t myspotlight
+
+# Run container with --runtime=nvidia
+sudo docker run -i -t --runtime=nvidia -p 8888:8888 -v $PWD/notebooks:/opt/notebooks myspotlight /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
+
+```
+* Scenario 2b (GPU, no dockerized):  AWS p2.x (1 gpu nvidia Tesla K80). Deep Learning AMI Ubuntu Linux - 2.4_Oct2017 (ami-f1d51489), NVIDIA Driver 375.66, CUDA 8.0, libcudnn.so.5.1.10, spotlight=0.1.3
 ```
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 chmod +x Miniconda3-latest-Linux-x86_64.sh
@@ -36,8 +55,8 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.063+-0.0005 | 0.037+-0.001 | 64.5 +-1.5s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=10, loss='bpr'| 0.068 | 0.038 |
 | --- | --- | --- | -----------| ---- | --- | ---
-| 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.078 +-0.001  | 0.056 +-0.001 | 19s +-0.5s
-| 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.064 +-0.003 | 0.037 +-0.001 | 16.5s +-0.5s 
+| 2b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.078 +-0.001  | 0.056 +-0.001 | 19s +-0.5s
+| 2b | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.064 +-0.003 | 0.037 +-0.001 | 16.5s +-0.5s 
 
 
 #### Movielens 10M
@@ -47,8 +66,8 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.076 | 0.059 | 3h33:09s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.040 | 0.025 |2h:39:41s
 | --- | --- | --- | -----------| ---- | --- | ---
-| 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077 +-0.001 | 0.059 +-0.001 | 5:08.5s +-0.5s
-| 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.038+-0.002 | 0.023+-0.002 | 5:05.5s +-0.5s
+| 2b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077 +-0.001 | 0.059 +-0.001 | 5:08.5s +-0.5s
+| 2b | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.038+-0.002 | 0.023+-0.002 | 5:05.5s +-0.5s
 
 ### Conclusions
 * Scores on transposed datasets are significantly lower than scores on original datasets.
