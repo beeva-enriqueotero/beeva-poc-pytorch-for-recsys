@@ -47,7 +47,7 @@ sudo docker build . -t myspotlight
 
 # Run container with --runtime=nvidia
 sudo docker run -i -t --runtime=nvidia -p 8888:8888 -v $PWD/notebooks:/opt/notebooks myspotlight /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
-
+# If disk space problems: sudo rm -rf /var/cache/apt
 ```
 * Scenario 2b (GPU, no dockerized):  AWS p2.x (1 gpu nvidia Tesla K80). Deep Learning AMI Ubuntu Linux - 2.4_Oct2017 (ami-f1d51489), NVIDIA Driver 375.66, CUDA 8.0, libcudnn.so.5.1.10, spotlight=0.1.3
 ```
