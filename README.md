@@ -47,7 +47,7 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.076 | 0.059 | 3h33:09s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.040 | 0.025 |2h:39:41s
 | --- | --- | --- | -----------| ---- | --- | ---
-| 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.078 | 0.060 | 5:08s
+| 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077 +-0.001 | 0.059 +-0.001 | 5:08.5s +-0.5s
 | 2 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'|  |  |
 
 ### Conclusions
