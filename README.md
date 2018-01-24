@@ -9,21 +9,40 @@ Proof of Concept with PyTorch-based [Spotlight](https://github.com/maciejkula/sp
 
 ```
 # Instructions for infrastructure 1
+git clone https://github.com/beeva-enriqueotero/beeva-poc-pytorch-for-recsys
+cd beeva-poc-pytorch-for-recsys/
 docker run -i -t -p 8888:8888 -v $PWD/notebooks:/opt/notebooks continuumio/anaconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
 ```
 
-* Scenario 2 (GPU, dockerized): AWS p2.x (1 gpu nvidia Tesla K80). Ubuntu AMI.
+* Scenario 2 (GPU, dockerized): AWS p2.x (1 gpu nvidia Tesla K80). Ubuntu AMI (50 GB hard disk). NVIDIA-SMI 390.12. cuda-9.1 (host). Conda: 4.4.7-py36_0
 ```
-# Install nvidia-docker2
+# Install CUDA
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install cuda -y
+
+# Install docker-ce
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update
-sudo apt-get install docker-ce
-sudo apt install nvidia-docker
+sudo apt-get install docker-ce -y --allow-unauthenticated
+
+# Install nvidia-docker2
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64/nvidia-docker.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
 
 # Build image
+git clone https://github.com/beeva-enriqueotero/beeva-poc-pytorch-for-recsys
+cd beeva-poc-pytorch-for-recsys/
 sudo docker build . -t myspotlight
 
 # Run container with --runtime=nvidia
@@ -32,14 +51,20 @@ sudo docker run -i -t --runtime=nvidia -p 8888:8888 -v $PWD/notebooks:/opt/noteb
 ```
 * Scenario 2b (GPU, no dockerized):  AWS p2.x (1 gpu nvidia Tesla K80). Deep Learning AMI Ubuntu Linux - 2.4_Oct2017 (ami-f1d51489), NVIDIA Driver 375.66, CUDA 8.0, libcudnn.so.5.1.10, spotlight=0.1.3
 ```
+# Install Miniconda
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 chmod +x Miniconda3-latest-Linux-x86_64.sh
 ./Miniconda3-latest-Linux-x86_64.sh
 # Miniconda3 default installation
 export PATH=/home/ubuntu/miniconda3/bin:$PATH
+
+# Install jupyter
 conda install jupyter -y
 source activate $HOME/miniconda3
 python -m ipykernel install --user --name py3-conda --display-name "Python3 conda"
+
+# Get notebook and launch jupyter
+git clone https://github.com/beeva-enriqueotero/beeva-poc-pytorch-for-recsys
 jupyter notebook --ip='*' --allow-root
 # If disk space problems: rm -rf /home/ubuntu/src/cntk
 ```
