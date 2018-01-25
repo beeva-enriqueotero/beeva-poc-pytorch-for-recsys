@@ -101,7 +101,7 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | --- | --- | --- | -----------| ---- | --- | ---
 | 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.076 | 0.059 | 3h33:09s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.040 | 0.025 |2h:39:41s
-| 1b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'|   |  | 2h44min:14s
+| 1b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077  | 0.058 | 2h44:14s
 | --- | --- | --- | -----------| ---- | --- | ---
 | 2 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077 | 0.059 | 5:20s
 | 2b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.077 +-0.001 | 0.059 +-0.001 | 5:08.5s +-0.5s
