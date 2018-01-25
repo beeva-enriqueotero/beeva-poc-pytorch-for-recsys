@@ -8,10 +8,19 @@ Proof of Concept with PyTorch-based [Spotlight](https://github.com/maciejkula/sp
 * Scenario 1 (CPU, dockerized): laptop 16GB, 4 processors Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz, spotlight=0.1.3
 
 ```
-# Instructions for infrastructure 1
 git clone https://github.com/beeva-enriqueotero/beeva-poc-pytorch-for-recsys
 cd beeva-poc-pytorch-for-recsys/
 docker run -i -t -p 8888:8888 -v $PWD/notebooks:/opt/notebooks continuumio/anaconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
+```
+
+* Scenario 1b (CPU, dockerized): AWS c5.4xlarge. ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20180109 (ami-1ee65166) Hard Disk 50GB, spotlight=0.1.3, pytorch 0.3.0
+
+```
+git clone https://github.com/beeva-enriqueotero/beeva-poc-pytorch-for-recsys
+cd beeva-poc-pytorch-for-recsys/
+sudo apt update
+sudo apt install docker.io -y
+sudo docker run -i -t -p 8888:8888 -v $PWD/notebooks:/opt/notebooks continuumio/anaconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --allow-root"
 ```
 
 * Scenario 2 (GPU, dockerized): AWS p2.x (1 gpu nvidia Tesla K80). Ubuntu AMI (50 GB hard disk). NVIDIA-SMI 390.12. cuda-9.1 (host). Conda: 4.4.7-py36_0
