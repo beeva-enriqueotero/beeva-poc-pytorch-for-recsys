@@ -92,6 +92,8 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='adaptive_hinge'| 0.061 | 0.031 | 79.5s
 | 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='hinge'| 0.063 | 0.039 | 81.7s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='hinge'| 0.052 | 0.024 | 73.8s
+| 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='pointwise'| 0.064 | 0.037 | 61.8s
+| 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='pointwise'| 0.051 | 0.022 | 68.9s
 | 1b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'|  0.076 | 0.054 | 30.8s
 | 1b | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.066 | 0.036 | 35.3s
 | --- | --- | --- | -----------| ---- | --- | ---
