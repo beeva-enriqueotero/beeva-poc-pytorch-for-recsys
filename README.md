@@ -88,6 +88,8 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 | 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.079+-0.0005 | 0.057+-0.0005 | 60 +-1s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.063+-0.0005 | 0.037+-0.001 | 64.5 +-1.5s
 | 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=10, loss='bpr'| 0.068 | 0.038 |
+| 1 | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='adaptive_hinge'| 0.082 | 0.056 | 73.5s
+| 1 | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='adaptive_hinge'| 0.061 | 0.031 | 79.5s
 | 1b | split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'|  0.076 | 0.054 | 30.8s
 | 1b | transpose & split 2/10 | ImplicitFactorizationModel | n_iter=3, loss='bpr'| 0.066 | 0.036 | 35.3s
 | --- | --- | --- | -----------| ---- | --- | ---
