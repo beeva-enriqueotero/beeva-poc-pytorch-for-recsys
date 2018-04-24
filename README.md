@@ -116,6 +116,7 @@ Then open `spotlight_experiment.ipynb` notebook in your browser
 ### Conclusions
 * Scores on transposed datasets are significantly lower than scores on original datasets.
 * Execution on scenario 2 (GPU) is around 40x faster for Movielens10M not transposed.
+* There is no difference in MAP between transposing the dataset and regrouping the items by user after the predictions
 
 ### Issues
 * Not compatible with P3 instances and NVIDIA containers: Spotlight 0.1.3 requires CUDA 8 but Tesla V100 requires CUDA9 for optimal performance. Error. `Found GPU0 Tesla V100-SXM2-16GB which requires CUDA_VERSION >= 8000 [...]`
